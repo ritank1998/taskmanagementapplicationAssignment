@@ -28,36 +28,46 @@ This README provides detailed instructions for setting up the backend for the Ta
 
 1. **Create a Docker Compose File:**
    - In the root of your project directory, create a `docker-compose.yml` file with the following content:
-     ```version: "3.8"
+     ```yaml
+     version: "3.8"
 
-services:
-  
-  directus:
-    image: directus/directus:11.0.0
-    ports:
-      - 8055:8055
-    volumes:
-      - ./database:/directus/database
-      - ./uploads:/directus/uploads
-      - ./extensions:/directus/extensions
-    environment:
-      SECRET: "taskmanagementapplication"
-      ADMIN_EMAIL: ""
-      ADMIN_PASSWORD: ""
-      DB_CLIENT: "mysql"
-      DB_HOST: "host.docker.internal"
-      DB_PORT: "3306"
-      DB_USER: "root"
-      DB_PASSWORD: "root"  # Ensure this matches MYSQL_ROOT_PASSWORD in MySQL
-      DB_DATABASE: "directus"
-      WEBSOCKETS_ENABLED: "true"
+     services:
+       mysql:
+         image: mysql:8.0
+         container_name: mysql
+         environment:
+           MYSQL_ROOT_PASSWORD: root
+           MYSQL_DATABASE: task_management_db
+         ports:
+           - "3306:3306"
+         volumes:
+           - mysql-data:/var/lib/mysql
 
-volumes:
-  mysql-data:
+       directus:
+         image: directus/directus:11.0.0
+         container_name: directus
+         ports:
+           - "8055:8055"
+         volumes:
+           - ./uploads:/directus/uploads
+           - ./extensions:/directus/extensions
+         environment:
+           SECRET: "taskmanagementapplication"
+           ADMIN_EMAIL: "admin@example.com"
+           ADMIN_PASSWORD: "adminpassword"
+           DB_CLIENT: "mysql"
+           DB_HOST: "mysql"
+           DB_PORT: "3306"
+           DB_USER: "root"
+           DB_PASSWORD: "root"  # Ensure this matches MYSQL_ROOT_PASSWORD in MySQL
+           DB_DATABASE: "task_management_db"
+           WEBSOCKETS_ENABLED: "true"
 
+     volumes:
+       mysql-data:
      ```
 
-   - Replace `your_mysql_password` with the password you set for MySQL.
+   - Replace `admin@example.com` and `adminpassword` with your desired Directus admin email and password.
 
 2. **Start the Docker Containers:**
    - Open a terminal, navigate to the directory containing `docker-compose.yml`, and run:
@@ -111,3 +121,10 @@ volumes:
 - Ensure that both MySQL and Directus are running.
 - Your backend application should now be configured and ready to use.
 
+## Contributing
+
+Feel free to contribute to this project by submitting issues or pull requests. For more details on how to get involved, please check the [Contributing Guidelines](CONTRIBUTING.md).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
