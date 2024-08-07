@@ -28,22 +28,22 @@ This README provides detailed instructions for setting up the backend for the Ta
 
 1. **Create a Docker Compose File:**
    - In the root of your project directory, create a `docker-compose.yml` file with the following content:
-     ```yaml
-     version: "3.8"
-     services:
+     ```version: "3.8"
+
+services:
   
-     directus:
-     image: directus/directus:11.0.0
-     ports:
+  directus:
+    image: directus/directus:11.0.0
+    ports:
       - 8055:8055
-     volumes:
+    volumes:
       - ./database:/directus/database
       - ./uploads:/directus/uploads
       - ./extensions:/directus/extensions
-     environment:
+    environment:
       SECRET: "taskmanagementapplication"
-      ADMIN_EMAIL: "saxena.ritank@gmail.com"
-      ADMIN_PASSWORD: "Ritank@1998"
+      ADMIN_EMAIL: ""
+      ADMIN_PASSWORD: ""
       DB_CLIENT: "mysql"
       DB_HOST: "host.docker.internal"
       DB_PORT: "3306"
@@ -52,8 +52,9 @@ This README provides detailed instructions for setting up the backend for the Ta
       DB_DATABASE: "directus"
       WEBSOCKETS_ENABLED: "true"
 
-     volumes:
-      mysql-data:
+volumes:
+  mysql-data:
+
      ```
 
    - Replace `your_mysql_password` with the password you set for MySQL.
