@@ -29,37 +29,31 @@ This README provides detailed instructions for setting up the backend for the Ta
 1. **Create a Docker Compose File:**
    - In the root of your project directory, create a `docker-compose.yml` file with the following content:
      ```yaml
-     version: '3.8'
-
+     version: "3.8"
      services:
-       mysql:
-         image: mysql:8.0
-         container_name: mysql
-         environment:
-           MYSQL_ROOT_PASSWORD: your_mysql_password
-           MYSQL_DATABASE: task_management_db
-         ports:
-           - "3306:3306"
-         volumes:
-           - mysql_data:/var/lib/mysql
-
-       directus:
-         image: directus/directus
-         container_name: directus
-         environment:
-           DATABASE_CLIENT: mysql
-           DATABASE_HOST: mysql
-           DATABASE_PORT: 3306
-           DATABASE_NAME: task_management_db
-           DATABASE_USER: root
-           DATABASE_PASSWORD: your_mysql_password
-         ports:
-           - "8055:8055"
-         depends_on:
-           - mysql
+  
+     directus:
+     image: directus/directus:11.0.0
+     ports:
+      - 8055:8055
+     volumes:
+      - ./database:/directus/database
+      - ./uploads:/directus/uploads
+      - ./extensions:/directus/extensions
+     environment:
+      SECRET: "taskmanagementapplication"
+      ADMIN_EMAIL: "saxena.ritank@gmail.com"
+      ADMIN_PASSWORD: "Ritank@1998"
+      DB_CLIENT: "mysql"
+      DB_HOST: "host.docker.internal"
+      DB_PORT: "3306"
+      DB_USER: "root"
+      DB_PASSWORD: "root"  # Ensure this matches MYSQL_ROOT_PASSWORD in MySQL
+      DB_DATABASE: "directus"
+      WEBSOCKETS_ENABLED: "true"
 
      volumes:
-       mysql_data:
+      mysql-data:
      ```
 
    - Replace `your_mysql_password` with the password you set for MySQL.
