@@ -1,15 +1,32 @@
 # Task Management Application
 
-### This Project contains all the Details and Guidelines to Ensure the smooth Usage of this Task Management Application
+Welcome to the Task Management Application! This project is designed to help you manage tasks efficiently with a sleek, modern interface and robust backend capabilities.
 
-### Task Management Application is a sleek, efficient tool designed with Svelte for a responsive user experience and Flowbite UI components for a modern, intuitive interface. It integrates seamlessly with Directus CMS and MySQL, offering robust data management and real-time updates. Manage your tasks effortlessly with a clean design and powerful backend capabilities, ensuring streamlined productivity and organization. Ideal for teams and individuals looking for a reliable and user-friendly task management solution.
+## Overview
 
-### Frontend: Svelte framework and Flowbite UI components for a dynamic, user-friendly interface.
-### Please Follow the instructions mentioned under TaskApp to configure Frontend.
+The Task Management Application features:
+
+- **Frontend:** Built with Svelte for a responsive experience and Flowbite UI components for a modern, intuitive design.
+- **Backend:** Integrated with Directus CMS and MySQL to ensure powerful data management and real-time functionality.
+
+## Getting Started
+
+### Frontend
+
+The frontend utilizes the Svelte framework along with Flowbite UI components to provide a dynamic and user-friendly interface. For setup and configuration instructions, please refer to the guidelines under the [TaskApp](#) section.
+
+### Backend
+
+The backend is powered by Directus CMS and MySQL, offering comprehensive data management and real-time updates. Follow the instructions under the [Taskmanagement](#) section for backend setup and configuration.
+
+## Instructions
+
+- **Frontend Configuration:** Detailed instructions can be found in the [TaskApp](#) section of this README.
+- **Backend Configuration:** Follow the steps outlined in the [Taskmanagement](#) section to set up the backend.
+
+## Screenshot
+
+![Screenshot](<WhatsApp Image 2024-08-07 at 16.50.29.jpeg>)
 
 
-### Backend: Directus CMS integrated with MySQL for powerful data management and real-time functionality.
-### Please Follow the Instructions mentioned under Taskmanagement to configure Backend
 
-
-![alt text](<WhatsApp Image 2024-08-07 at 16.50.29.jpeg>)
