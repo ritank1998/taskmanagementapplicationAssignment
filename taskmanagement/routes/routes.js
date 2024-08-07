@@ -1,10 +1,11 @@
 import dotenv from "dotenv"
 import mysql from "mysql2"
+import axios from 'axios'
 
 dotenv.config()
 
-const token = process.env.TOKEN;
-const role = process.env.ROLEID;
+const token = "9Walc_oScJAIE--1eh74pJqIZh-8TNSp";
+const role = "47518e6f-4ece-4c07-80e0-d7c4ad45de16";
 
 
 const dbConfig = {
@@ -171,32 +172,51 @@ export const deleteTaskByTitle= async(req,res)=>{
   }
 }
 
+export const deleteTaskById = async (req, res) => {
+  const { id } = req.query;
 
-// export const deleteTaskByTitle= async(req,res)=>{
-//   const { id } = req.query;
-  
-//   if (!id) {
-//     return res.status(400).json({ error: 'ID is required' });
-//   }
+  if (!id) {
+    return res.status(400).json({ error: 'ID is required' });
+  }
 
-//   try{
-//     const deleteResponse = await fetch(`http://127.0.0.1:8055/items/tasks/${id}`, {
-//       method: 'DELETE',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM1NTE0ZWY2LTU1N2UtNDBmYS1iMDI3LTMxMGQ1MzRjMWFkMSIsInJvbGUiOiJjNjNlMTdmYy1iMGY5LTQxNWUtOGZhOS1jY2ZhMmYyZWYzNzQiLCJhcHBfYWNjZXNzIjoxLCJhZG1pbl9hY2Nlc3MiOjEsImlhdCI6MTcyMjk1NzI3OSwiZXhwIjoxNzIyOTU4MTc5LCJpc3MiOiJkaXJlY3R1cyJ9.DSt9iwhqGpCgDHeUXRKzlpVtHQGu2ZWM9EVydmJIImA` // Ensure token is correctly defined
-//       }
-//     });
+  try {
+    const response = await fetch(`http://127.0.0.1:8055/items/task/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer 9Walc_oScJAIE--1eh74pJqIZh-8TNSp`, // Replace with your actual access token
+        'Content-Type': 'application/json'
+      }
+    });
 
-//     if (deleteResponse.ok) {
-//       res.status(200).json({ message: 'Task deleted successfully' });
-//     } else {
-//       const errorText = await deleteResponse.text();
-//       throw new Error(`Failed to delete task from Directus. Status: ${deleteResponse.status}, Response: ${errorText}`);
-//     }
-//   }
-//   catch(err){
-//     console.log(err)
-//     res.status(500).json({err: err.message})
-//   }
-// }
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error('Error deleting task:', errorData);
+      return res.status(response.status).json({ error: errorData.message || 'An error occurred while deleting the task' });
+    }
+
+    res.status(200).json({ message: 'Task deleted successfully' });
+  } catch (err) {
+    console.error('Error:', err);
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
+
+const getRoles = async () => {
+  try {
+    const response = await axios.get('http://127.0.0.1:8055/roles', {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    });
+    
+    // Process the roles response
+    const roles = response.data;
+    console.log('Roles:', roles);
+  } catch (error) {
+    console.error('Error fetching roles:', error);
+  }
+};
+
