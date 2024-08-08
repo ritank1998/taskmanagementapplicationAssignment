@@ -17,7 +17,7 @@ The frontend utilizes the Svelte framework along with Flowbite UI components to 
 
 ### Backend
 
-The backend is powered by Directus CMS and MySQL, offering comprehensive data management and real-time updates. Follow the instructions under the [Taskmanagement](#) section for backend setup and configuration.
+The backend is powered by Directus CMS and MySQL, offering comprehensive data management and real-time updates. Follow the instructions under the [Taskmanagement](https://github.com/ritank1998/taskmanagementapplicationAssignment/blob/main/taskmanagement/README.md) section for backend setup and configuration.
 
 ## Instructions
 
