@@ -102,6 +102,108 @@ This README provides detailed instructions for setting up the backend for the Ta
      npm install
      ```
 
+## API Documentation for Directus & MYsql Communication
+
+This documentation describes the API endpoints used for user registration, authentication, task creation, retrieval, and deletion in a system connected with Directus for database management.
+
+### Base URL
+All endpoints are prefixed with the base URL: http://localhost:your_desired_port
+
+
+### Endpoints
+
+#### 1. Create New User
+- **Endpoint**: `/newuser`
+- **Method**: `POST`
+- **Description**: Registers a new user in the system.
+- **Request Body**:
+  ```json
+  {
+      "username": "string",
+      "email": "string",
+      "password": "string"
+  }
+Response:
+201 Created: User successfully registered.
+400 Bad Request: Validation errors or missing fields.
+```
+
+#### 2. User Login
+**Endpoint**: /login
+**Method**: POST
+**Description**: Authenticates an existing user.
+**Request Body**: 
+```json
+{
+    "email": "string",
+    "password": "string"
+}
+
+Response:
+200 OK: User successfully authenticated.
+401 Unauthorized: Invalid email or password.
+```
+### 3. Create Task
+**Endpoint**: /task
+**Method**: POST
+**Description**: Creates a new task in the database.
+**Request Body**:
+```json
+{
+    "title": "string",
+    "description": "string",
+    "dueDate": "YYYY-MM-DD"
+}
+
+Response:
+201 Created: Task successfully created.
+400 Bad Request: Validation errors or missing fields.
+```
+### 4. Get Tasks
+**Endpoint**: /gettask
+**Method**: GET
+**Description**: Retrieves all tasks from the database.
+**Request body**:
+```json
+{
+"created_by": string
+}
+
+Response:
+200 OK: Successfully retrieved tasks.
+204 No Content: No tasks found.
+```
+
+### 5. Delete Task
+**Endpoint**: /deleteTask
+**Method**: DELETE
+**Description**: Deletes a task from the database using the task ID.
+**Request Body**:
+```json
+Copy code
+{
+    "taskId": "string"
+}
+Response:
+200 OK: Task successfully deleted.
+404 Not Found: Task with the given ID not found.
+```
+
+### Notes
+```note
+Ensure the API is secured with appropriate authentication and authorization mechanisms.
+Validate all inputs to prevent SQL injection and other security vulnerabilities.
+Use HTTPS to encrypt data in transit.
+```
+```error
+Error Codes
+400 Bad Request: Invalid input or missing required fields.
+401 Unauthorized: Authentication failed.
+404 Not Found: Resource not found.
+500 Internal Server Error: Server encountered an error.
+```
+
+
 ## Step 4: Configure Environment Variables
 
 1. **Create a `.env` File:**
