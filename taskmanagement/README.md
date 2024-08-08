@@ -121,10 +121,3 @@ This README provides detailed instructions for setting up the backend for the Ta
 - Ensure that both MySQL and Directus are running.
 - Your backend application should now be configured and ready to use.
 
-## Contributing
-
-Feel free to contribute to this project by submitting issues or pull requests. For more details on how to get involved, please check the [Contributing Guidelines](CONTRIBUTING.md).
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
