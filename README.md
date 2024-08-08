@@ -21,8 +21,8 @@ The backend is powered by Directus CMS and MySQL, offering comprehensive data ma
 
 ## Instructions
 
-- **Frontend Configuration:** Detailed instructions can be found in the [TaskApp](#) section of this README.
-- **Backend Configuration:** Follow the steps outlined in the [Taskmanagement](#) section to set up the backend.
+- **Frontend Configuration:** Detailed instructions can be found in the [TaskApp](https://github.com/ritank1998/taskmanagementapplicationAssignment/blob/main/taskApp/README.md) section of this README.
+- **Backend Configuration:** Follow the steps outlined in the [Taskmanagement](https://github.com/ritank1998/taskmanagementapplicationAssignment/blob/main/taskmanagement/README.md) section to set up the backend.
 
 ## Screenshot
 
