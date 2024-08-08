@@ -13,7 +13,7 @@ The Task Management Application features:
 
 ### Frontend
 
-The frontend utilizes the Svelte framework along with Flowbite UI components to provide a dynamic and user-friendly interface. For setup and configuration instructions, please refer to the guidelines under the [TaskApp](#) section.
+The frontend utilizes the Svelte framework along with Flowbite UI components to provide a dynamic and user-friendly interface. For setup and configuration instructions, please refer to the guidelines under the [TaskApp](https://github.com/ritank1998/taskmanagementapplicationAssignment/blob/main/taskApp/README.md) section.
 
 ### Backend
 
